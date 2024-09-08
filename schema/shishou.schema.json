@@ -135,6 +135,11 @@
 					"items": { "allOf": [{ 
 					"patternProperties": { "": { "type": "number" } }
 					}] }
+				},
+				"instances": {
+					"title": "Relations",
+					"description": "The instances of the class.",
+					"patternProperties": { "": { "$ref": "#/definitions/instance" } }
 				}
 			}
 		},
