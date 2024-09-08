@@ -118,9 +118,9 @@
 					"description": "Marks the class as abstract (can not have instances).",
 					"type": "boolean"
 				},
-				"parent": {
-					"title": "Parent",
-					"description": "Indicates the parent class.",
+				"extends": {
+					"title": "Extends",
+					"description": "Indicates the class to extend.",
 					"type": "string"
 				},
 				"domains": {
