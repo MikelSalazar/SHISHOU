@@ -1,0 +1,158 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "https:/shishou.org/schema/shishou.schema.json",
+	"description": "The JSON Schema of the SHISHOU project.",
+	"$ref": "#/definitions/root",
+	"definitions": {
+		"root": {
+			"title": "Root",
+			"description": "The root node of the SHISHOU schema.",
+			"properties": {
+				"SHISHOU": {
+					"title": "Version",
+					"description": "The version of the SHISHOU framework.",
+					"type": "number"
+				},
+				"title": {
+					"title": "Title",
+					"description": "The title of the SHISHOU document.",
+					"type": "string"
+				},
+				"description": {
+					"title": "Description",
+					"description": "The description of the SHISHOU document.",
+					"type": "string"
+				},
+				"authors": {
+					"title": "Authors",
+					"description": "The authors of the SHISHOU document.",
+					"type": "string"
+				},
+				"model": {
+					"title": "Model",
+					"description": "The data model of the SHISHOU document.",
+					"$ref": "#/definitions/model"
+				}
+			},
+			"required": ["SHISHOU"]
+		},
+		"model": {
+			"title": "Model",
+			"description": "The data model of a SHISHOU document.",
+			"properties": {
+				"title": {
+					"title": "Title",
+					"description": "The title of the data model.",
+					"type": "string"
+				},
+				"description": {
+					"title": "Description",
+					"description": "The description of the data model.",
+					"type": "string"
+				},
+				"domains": {
+					"title": "Domains",
+					"description": "The domains of the data model.",
+					"patternProperties": { "": { "$ref": "#/definitions/domain" } }
+				},
+				"relations": {
+					"title": "Relations",
+					"description": "The relations of the data model.",
+					"patternProperties": { "": { "$ref": "#/definitions/relation" } }
+				},
+				"classes": {
+					"title": "Classes",
+					"description": "The classes of the data model.",
+					"patternProperties": { "": { "$ref": "#/definitions/class" } }
+				}
+			}
+		},
+		"domain": {
+			"title": "Domain",
+			"description": "Defines a domain in a data model.",
+			"properties": {
+				"title": {
+					"title": "Title",
+					"description": "The title of the domain.",
+					"type": "string"
+				},
+				"description": {
+					"title": "Description",
+					"description": "The description of a domain.",
+					"type": "string"
+				}
+			}
+		},
+		"relation": {
+			"title": "Relation",
+			"description": "Defines a relation in a data model.",
+			"properties": {
+				"title": {
+					"title": "Title",
+					"description": "The title of the relation.",
+					"type": "string"
+				},
+				"description": {
+					"title": "Description",
+					"description": "The description of a relation.",
+					"type": "string"
+				}
+			}
+		},
+		"class": {
+			"title": "Class",
+			"description": "Defines a class in a data model.",
+			"properties": {
+				"title": {
+					"title": "Title",
+					"description": "The title of the class.",
+					"type": "string"
+				},
+				"description": {
+					"title": "Description",
+					"description": "The description of a class.",
+					"type": "string"
+				},
+				"abstract": {
+					"title": "Abstract",
+					"description": "Marks the class as abstract (can not have instances).",
+					"type": "boolean"
+				},
+				"parent": {
+					"title": "Parent",
+					"description": "Indicates the parent class.",
+					"type": "string"
+				},
+				"domains": {
+					"title": "Domains",
+					"description": "The domains the class belongs to.",
+					"type": "array",
+					"items": { "allOf": [{ "type": "string"}] }
+				},
+				"relations": {
+					"title": "Relations",
+					"description": "The relations the class belongs to.",
+					"items": { "allOf": [{ 
+					"patternProperties": { "": { "type": "number" } }
+					}] }
+				}
+			}
+		},
+		"instance": {
+			"title": "Instance",
+			"description": "Defines a instance of a class.",
+			"properties": {
+				"title": {
+					"title": "Title",
+					"description": "The title of the instance.",
+					"type": "string"
+				},
+				"description": {
+					"title": "Description",
+					"description": "The description of a instance.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}
