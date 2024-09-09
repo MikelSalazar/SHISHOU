@@ -126,15 +126,12 @@
 				"domains": {
 					"title": "Domains",
 					"description": "The domains the class belongs to.",
-					"type": "array",
-					"items": { "allOf": [{ "type": "string"}] }
+					"items": { "allOf": [{ "patternProperties": { "": { "type": "number" } } }] }
 				},
 				"relations": {
 					"title": "Relations",
 					"description": "The relations the class belongs to.",
-					"items": { "allOf": [{ 
-					"patternProperties": { "": { "type": "number" } }
-					}] }
+					"items": { "allOf": [{ "patternProperties": { "": { "type": "number" } } }] }
 				},
 				"instances": {
 					"title": "Relations",
